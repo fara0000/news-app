@@ -1,0 +1,75 @@
+Packages ============>
+
+For navigation=====
+npm install react-native-reanimated react-native-gesture-handler react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+For Bottom Navigation=====
+npm install @react-navigation/bottom-tabs
+
+
+For react Navigation Stack====
+npm install @react-navigation/stack
+
+
+
+For Setup vecor icons=====	
+1-npm install --save react-native-vector-icons
+2-
+Edit android/app/build.gradle ( NOT android/build.gradle ) and add the following:
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+3-
+Imports
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
+
+For Tab Bar =================
+npm install @react-navigation/material-top-tabs react-native-tab-view
+
+
+
+For Gradient Color =======
+npm install react-native-linear-gradient --save
+1-
+in android/settings.gradle
+
+include ':react-native-linear-gradient'
+project(':react-native-linear-gradient').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-linear-gradient/android')
+2-
+in android/app/build.gradle add:
+dependencies {
+    ...
+    implementation project(':react-native-linear-gradient')
+}
+
+3-
+and finally, in android/app/src/main/java/com/{YOUR_APP_NAME}/MainActivity.java for react-native < 0.29, or android/app/src/main/java/com/{YOUR_APP_NAME}/MainApplication.java for react-native >= 0.29 add:
+
+
+//... 
+import com.BV.LinearGradient.LinearGradientPackage; // <--- This! 
+//... 
+@Override
+protected List<ReactPackage> getPackages() {
+  return Arrays.<ReactPackage>asList(
+    new MainReactPackage(),
+    new LinearGradientPackage() // <---- and This! 
+  );
+}
+
+
+
+
+// React Native Paper Setup
+yarn add react-native-paper
+
+
+// Google login setup with firebase
+1) Install Packages
+yarn add @react-native-google-signin/google-signin
+2) At firebase register app
+3)Give package name
+4) Give debug ssh1 key by typing following command
+keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+5) Put google.services.json to android/app/gradle.build
+yarn add @react-native-firebase/app
+
+yarn add @react-native-firebase/auth
